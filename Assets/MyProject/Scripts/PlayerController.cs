@@ -1,9 +1,12 @@
+using Photon.Realtime;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : Character2D
 {
+
+    Player photonPlayer;
 
     protected override void Update()
     {
