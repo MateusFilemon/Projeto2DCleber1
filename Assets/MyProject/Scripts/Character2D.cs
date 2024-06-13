@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
+using Photon.Realtime;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class Character2D : MonoBehaviour
+public class Character2D : MonoBehaviourPun
 {
 
     protected Rigidbody2D rb;
@@ -17,7 +19,10 @@ public class Character2D : MonoBehaviour
     protected bool canJump;
     protected float x, y;
 
+
     protected float attackTime;
+    [SerializeField] protected GameObject arrowPrefab;
+   
     [SerializeField]  protected float damage;
     [SerializeField] protected float AttackSpeed;
     [SerializeField] protected float attackRange;
@@ -37,6 +42,7 @@ public class Character2D : MonoBehaviour
 
     protected virtual void Update()
     {
+
         Flip();
         Animations();
     }
