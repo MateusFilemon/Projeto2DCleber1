@@ -34,7 +34,8 @@ public class Arrow : MonoBehaviour
     {
         if (_other.CompareTag("Player"))
         {
-
+            _other.GetComponent<Character2D>().TakeDamage(damage);
+            Destroy(gameObject);
         }
     }
 

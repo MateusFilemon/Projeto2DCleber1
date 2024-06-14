@@ -39,6 +39,9 @@ MonoBehaviour:
   - CreatePlayerAvatar
   - Log
   - AttackPun
+  - CreateAvatar
+  - TakeDamagePun
+  - Initialize
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

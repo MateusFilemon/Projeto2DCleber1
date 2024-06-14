@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     [SerializeField] GameObject gameScreen;
 
+
     private void Awake()
     {
         instance = this;
@@ -22,9 +23,38 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     public void StartGame()
     {
-        photonView.RPC(nameof(CreatePlayerAvatar), PhotonNetwork.LocalPlayer, NetworkManager.instance.inputNickName.text);
+        Debug.Log(PhotonNetwork.CurrentRoom.PlayerCount);
+        if (PhotonNetwork.CurrentRoom.PlayerCount == 2)
+        {
+            photonView.RPC(nameof(CreateAvatar), RpcTarget.AllBuffered);
+        }
+
+
+        //photonView.RPC(nameof(CreatePlayerAvatar), PhotonNetwork.LocalPlayer, NetworkManager.instance.inputNickName.text);
 
     }
+
+    [PunRPC]
+    void CreateAvatar()
+    {
+        PhotonNetwork.LocalPlayer.NickName = NetworkManager.instance.inputNickName.text;
+
+        if (PhotonNetwork.PlayerList[0] == PhotonNetwork.LocalPlayer)
+        {
+            Vector3 _pos = new Vector2(-1f, -1f);
+            GameObject player = PhotonNetwork.Instantiate(playerPrefabTeamRed.name, _pos, Quaternion.identity);
+        }
+        else
+        {
+            Vector3 _pos = new Vector2(1f, -1f);
+            GameObject player = PhotonNetwork.Instantiate(playerPrefabTeamBlue.name, _pos, Quaternion.identity);
+        }
+
+        gameScreen.SetActive(true);
+        NetworkManager.instance.loadingScreen.SetActive(false);
+
+    }
+
 
     [PunRPC]
     //pode chamar o metodo de forma remota, chamar no computador alheio ou só de voce ou de uma pessoa especifica. Parecido com serializedfield, se põe na frente

@@ -643,33 +643,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: abb9059bed75cc643bc3224e2932e006, type: 3}
---- !u!1 &1846911091 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2314715097996741360, guid: 200e8a983b4ce81429d955a6ad3d5148, type: 3}
-  m_PrefabInstance: {fileID: 433633200402222581}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1846911096
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1846911091}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ObservedComponentsFoldoutOpen: 1
-  Group: 0
-  prefixField: -1
-  Synchronization: 3
-  OwnershipTransfer: 0
-  observableSearch: 2
-  ObservedComponents: []
-  sceneViewId: 1
-  InstantiationId: 0
-  isRuntimeInstantiated: 0
 --- !u!1001 &433633200402222581
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -718,25 +691,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1624842539657520792, guid: 200e8a983b4ce81429d955a6ad3d5148, type: 3}
-      propertyPath: m_text
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 2314715097996741360, guid: 200e8a983b4ce81429d955a6ad3d5148, type: 3}
       propertyPath: m_Name
       value: Network Manager
       objectReference: {fileID: 0}
-    - target: {fileID: 2411593940806514818, guid: 200e8a983b4ce81429d955a6ad3d5148, type: 3}
-      propertyPath: playerPrefabTeamRed
-      value: 
-      objectReference: {fileID: 4243411469135686431, guid: 307e59feb60ed7840b206dfd518d39f6, type: 3}
+    - target: {fileID: 7279078252063065827, guid: 200e8a983b4ce81429d955a6ad3d5148, type: 3}
+      propertyPath: sceneViewId
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2314715097996741360, guid: 200e8a983b4ce81429d955a6ad3d5148, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1846911096}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 200e8a983b4ce81429d955a6ad3d5148, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

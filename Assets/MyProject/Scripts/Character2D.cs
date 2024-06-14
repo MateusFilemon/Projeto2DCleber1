@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
+using static UnityEngine.Rendering.DebugUI;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class Character2D : MonoBehaviourPun
@@ -22,8 +23,8 @@ public class Character2D : MonoBehaviourPun
 
     protected float attackTime;
     [SerializeField] protected GameObject arrowPrefab;
-   
-    [SerializeField]  protected float damage;
+
+    [SerializeField] protected float damage;
     [SerializeField] protected float AttackSpeed;
     [SerializeField] protected float attackRange;
     [SerializeField] protected Transform attackPos;
@@ -35,8 +36,8 @@ public class Character2D : MonoBehaviourPun
     [SerializeField] protected bool dead;
 
 
-    protected virtual void Awake() 
-    { 
+    protected virtual void Awake()
+    {
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -51,20 +52,20 @@ public class Character2D : MonoBehaviourPun
     {
         Move();
 
-        if(canJump) 
+        if (canJump)
         {
             Jump();
         }
     }
 
-    protected virtual void Move() 
-    { 
+    protected virtual void Move()
+    {
         y = rb.velocity.y;
-        rb.velocity = new Vector2 (x * moveSpeed, y);
+        rb.velocity = new Vector2(x * moveSpeed, y);
     }
 
-    protected virtual void Jump() 
-    { 
+    protected virtual void Jump()
+    {
         canJump = false;
         Vector2 _velocity = rb.velocity;
         //velocidade sempre 0 para quando aplicar força ser sempre o mesmo valor
@@ -72,18 +73,18 @@ public class Character2D : MonoBehaviourPun
         rb.AddForce(Vector2.up * jumpForce);
     }
 
-    protected bool onGround() 
+    protected bool onGround()
     {
         return Physics2D.OverlapCircle(groundCheck.position, groundDistance, groundLayer);
     }
 
-    protected virtual void Flip() 
-    { 
+    protected virtual void Flip()
+    {
         //localScale escala xyz do objeto
         Vector3 _localScale = transform.localScale;
         Vector2 _velocity = rb.velocity;
 
-        if ( (_localScale.x > 0f && _velocity.x < -0.1f) || (_localScale.x < 0f && _velocity.x > -0.1f))
+        if ((_localScale.x > 0f && _velocity.x < -0.1f) || (_localScale.x < 0f && _velocity.x > 0.1f))
         {
             _localScale.x *= -1f;
             //= atribui valor
@@ -122,8 +123,29 @@ public class Character2D : MonoBehaviourPun
 
     protected virtual void Attack()
     {
-        attackTime = Time.time + 1f/AttackSpeed;
+        attackTime = Time.time + 1f / AttackSpeed;
 
     }
+
+    public virtual void TakeDamage(float _value)
+    {
+        if (!photonView.IsMine) return;
+
+        photonView.RPC(nameof(TakeDamagePun), RpcTarget.All, _value);
+    }
+
+    [PunRPC]
+    protected virtual void TakeDamagePun(float _value)
+    {
+        currentLife = Mathf.Max(currentLife - _value, 0);
+
+        if (currentLife == 0) Death();
+    }
+
+    void Death()
+    {
+        dead = true;
+    }
+
 
 }

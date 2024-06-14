@@ -14,7 +14,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public TMP_InputField inputNickName;
     public GameObject menuScreen;
     public GameObject loadingScreen;
-
+    [SerializeField] int playerCount = 2;
 
 
     private void Awake()
@@ -61,8 +61,12 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     public override void OnJoinRandomFailed(short returnCode, string message)
     {
-        PhotonNetwork.CreateRoom(null);
         Debug.Log("OnJoinRandomFailed");
+
+        RoomOptions options = new RoomOptions();
+        options.MaxPlayers = (byte)playerCount;
+
+        PhotonNetwork.CreateRoom(null, options);
     }
 
     public override void OnCreatedRoom()

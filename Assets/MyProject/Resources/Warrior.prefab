@@ -8,13 +8,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1293205737834491507, guid: ad977fb3c3526cb45ba0f518c2f5aae9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.002
+      objectReference: {fileID: 0}
+    - target: {fileID: 1293205737834491507, guid: ad977fb3c3526cb45ba0f518c2f5aae9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.01
+      objectReference: {fileID: 0}
     - target: {fileID: 1724689059121546412, guid: ad977fb3c3526cb45ba0f518c2f5aae9, type: 3}
       propertyPath: sceneViewId
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2468285046679239156, guid: ad977fb3c3526cb45ba0f518c2f5aae9, type: 3}
       propertyPath: m_Name
-      value: Player Variant
+      value: Warrior
       objectReference: {fileID: 0}
     - target: {fileID: 5931858706771818185, guid: ad977fb3c3526cb45ba0f518c2f5aae9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -56,6 +64,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6004550825173832415, guid: ad977fb3c3526cb45ba0f518c2f5aae9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2ca88a89899d81c4d87d0a2aa225770d, type: 3}
     - target: {fileID: 8753471608795979643, guid: ad977fb3c3526cb45ba0f518c2f5aae9, type: 3}
       propertyPath: sceneViewId
       value: 0
